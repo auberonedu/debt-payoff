@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,7 +6,7 @@ public class PayoffApp {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        List<Double> balances = new ArrayList<Double>();
+        List<CreditCard> cards = new ArrayList();
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
@@ -19,15 +17,17 @@ public class PayoffApp {
             // Consume \n after balance input 
             if(scan.hasNextLine()) scan.nextLine();
 
-            balances.add(balance);
+            CreditCard mycard = new CreditCard(name, apr, balance);
 
-            String aprString = String.format("%.2f%%", apr);
-            String balanceString = String.format("$%.2f", balance);
-            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+            cards.add(mycard);
+
+            // String aprString = String.format("%.2f%%", apr);
+            // String balanceString = String.format("$%.2f", balance);
+            // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
         }
 
-        System.out.println(balances);
-        Collections.sort(balances, Collections.reverseOrder());
-        System.out.println(balances);
+        System.out.println(cards);
+        // Collections.sort(cards, Collections.reverseOrder());
+        // System.out.println(cards);
     }
 }
