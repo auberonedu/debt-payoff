@@ -7,7 +7,7 @@ public class PayoffApp {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-       List<Double> balances = new ArrayList<Double>();
+       List<CreditCard> cards = new ArrayList<CreditCard>();
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
