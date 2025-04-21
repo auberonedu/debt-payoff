@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class PayoffApp {
     public static void main(String[] args) {
+      
         Scanner scan = new Scanner(System.in);
 
-        List<Double> balances = new ArrayList<Double>();
+        List<CreditCard> Cards = new ArrayList<>();
         
         
 
@@ -19,16 +20,18 @@ public class PayoffApp {
 
             // Consume \n after balance input 
             if(scan.hasNextLine()) scan.nextLine();
+            CreditCard myCard = new CreditCard(name, apr, balance);
 
-            balances.add(balance);
+            Cards.add(myCard);
 
-            String aprString = String.format("%.2f%%", apr);
-            String balanceString = String.format("$%.2f", balance);
-            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+            // String aprString = String.format("%.2f%%", apr);
+            // String balanceString = String.format("$%.2f", balance);
+            // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
         }
 
-        System.out.println(balances);
-        Collections.sort(balances, Collections.reverseOrder());
-        System.out.println(balances);
+        System.out.println(Cards);
+        // Collections.sort(Cards, Collections.reverseOrder());
+        // System.out.println(Cards);
     }
 }
+
