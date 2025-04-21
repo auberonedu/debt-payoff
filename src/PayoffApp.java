@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 public class PayoffApp {
     public static void main(String[] args) {
+
+
         Scanner scan = new Scanner(System.in);
 
         // Create an arrayList
-        List<Double> balances = new ArrayList<Double>();
+        List<CreditCard> cards = new ArrayList<>();
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
@@ -18,22 +20,21 @@ public class PayoffApp {
 
             // Consume \n after balance input 
             if(scan.hasNextLine()) scan.nextLine();
+
+            CreditCard myCard = new CreditCard(name, apr, balance);
             
             // Add the balance to the balances list
-            balances.add(balance);
+            cards.add(myCard);
            
 
-
-
-
-            String aprString = String.format("%.2f%%", apr);
-            String balanceString = String.format("$%.2f", balance);
-            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+            // String aprString = String.format("%.2f%%", apr);
+            // String balanceString = String.format("$%.2f", balance);
+            // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
         }
 
         // Print out the balances list and sort it
-        System.out.println(balances);
-        Collections.sort(balances, Collections.reverseOrder());
-        System.out.println(balances);
+        System.out.println(cards);
+        // Collections.sort(cards, Collections.reverseOrder());
+        // System.out.println(cards);
     }
 }
