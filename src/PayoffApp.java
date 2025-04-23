@@ -5,9 +5,19 @@ import java.util.Scanner;
 
 public class PayoffApp {
     public static void main(String[] args) {
+        
+        CreditCard amex = new CreditCard("American Express", 1007,22);
+        // System.out.println(amex.getApr());
+
+        CreditCard discover = new CreditCard("Discover It", 500, 33);
+
+        // System.out.println(discover.compareTo(amex));
+
+        System.out.println(amex.monthlyInterest());
+
         Scanner scan = new Scanner(System.in);
 
-        List<Double> balances = new ArrayList<>();
+        List<CreditCard> cards = new ArrayList<>();
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
@@ -18,15 +28,19 @@ public class PayoffApp {
             // Consume \n after balance input 
             if(scan.hasNextLine()) scan.nextLine();
 
-            balances.add(balance);
+            CreditCard myCard = new CreditCard(name, apr, balance);
 
-            String aprString = String.format("%.2f%%", apr);
-            String balanceString = String.format("$%.2f", balance);
-            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+            cards.add(myCard);
+
+            // String aprString = String.format("%.2f%%", apr);
+            // String balanceString = String.format("$%.2f", balance);
+            // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
         }
 
-        System.out.println(balances);
-        Collections.sort(balances, Collections.reverseOrder());
-        System.out.println(balances);
+        System.out.println(cards);
+        System.out.println();
+        Collections.sort(cards, Collections.reverseOrder());
+        System.out.println();
+        System.out.println(cards);
     }
 }
