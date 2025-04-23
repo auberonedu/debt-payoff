@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 public class PayoffApp {
     public static void main(String[] args) {
+        CreditCard amex = new CreditCard("American Express", 22, 1007);
+        CreditCard discover = new CreditCard("Discover It", 33, 500);
+
+        // System.out.println(amex.compareTo(discover));
+
         Scanner scan = new Scanner(System.in);
 
         List<CreditCard> cards = new ArrayList<>();
@@ -23,14 +28,14 @@ public class PayoffApp {
 
             cards.add(myCard);
 
-            // String aprString = String.format("%.2f%%", apr);
-            // String balanceString = String.format("$%.2f", balance);
-            // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+            String aprString = String.format("%.2f%%", apr);
+            String balanceString = String.format("$%.2f", balance);
+            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
         }
 
         System.out.println(cards);
-        // Collections.sort(cards, Collections.reverseOrder());
-        // System.out.println(cards);
+        Collections.sort(cards, Collections.reverseOrder());
+        System.out.println(cards);
 
     }
 }
