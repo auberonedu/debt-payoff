@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class PayoffApp {
     public static void main(String[] args) {
+        CreditCard amex = new CreditCard("American Express", 22, 1007);
+        CreditCard discover = new CreditCard("Discover It ", 33, 500);
+
+        // System.out.println(discover.compareTo(amex));
       
         Scanner scan = new Scanner(System.in);
 
@@ -30,8 +34,8 @@ public class PayoffApp {
         }
 
         System.out.println(Cards);
-        // Collections.sort(Cards, Collections.reverseOrder());
-        // System.out.println(Cards);
+        Collections.sort(Cards, Collections.reverseOrder());
+        System.out.println(Cards);
     }
 }
 
