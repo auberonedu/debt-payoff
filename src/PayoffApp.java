@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class PayoffApp {
-    public static void main(String[] args) {
-        List<CreditCard> cards = new ArrayList<>();
+    public static void main(String[] args) throws FileNotFoundException {
 
         // CreditCard amex = new CreditCard("American Express", 22, 1007);
         // CreditCard discover = new CreditCard("Discover It", 33, 500);
@@ -28,7 +29,9 @@ public class PayoffApp {
 
         // System.out.println(amex.monthlyInterest());
 
-        Scanner scan = new Scanner(System.in);
+        String filename = args[0];
+
+        Scanner scan = new Scanner(new File(filename));
 
         List<CreditCard> cards = new ArrayList<>();
 
@@ -56,7 +59,22 @@ public class PayoffApp {
         // Collections.sort(cards, Collections.reverseOrder());
         // System.out.println();
         // System.out.println(cards);
-        System.out.println(cardMap);
+        // System.out.println(cardMap);
+
+        Scanner userScanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.println("Enter the name of the card: ");
+            String cardName = userScanner.nextLine();
+
+            CreditCard myCard = cardMap.get(cardName);
+
+            if (myCard == null){
+                System.out.println("No such card!");
+            } else {
+                System.out.println(myCard);
+            }
+        }
     }
 }
 
