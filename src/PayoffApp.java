@@ -4,9 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class PayoffApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+
+
         // Map<String, Integer> schoolAges = new HashMap<>();
         // schoolAges.put("GRC",40);
         // schoolAges.put("WSU",100);
@@ -38,10 +44,11 @@ public class PayoffApp {
 
         // CreditCard myCard = cardMap.get("American Express");
         // System.out.println(myCard.getApr());
-
     //    System.out.println(amex.monthlyInterest());
+
+    String filename = args[0];
        
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(new File(filename));
 
        List<CreditCard> cards = new ArrayList<CreditCard>();
        Map<String, CreditCard> cardMap = new HashMap<>();
@@ -69,8 +76,22 @@ public class PayoffApp {
         // System.out.println(cards);
         // Collections.sort(cards, Collections.reverseOrder());
         // System.out.println(cards);
-        System.out.println(cardMap);
-        
- }
+        // System.out.println(cardMap);
+
+        Scanner userScanner = new Scanner(System.in);
+        while(true) { System.out.println("Enter the name of the card"); 
+        String cardName = userScanner.nextLine();
+
+        CreditCard myCard = cardMap.get(cardName);
+        if(myCard == null) { System.out.println("No such card!");
+    } else {
+        System.out.println(myCard);
+    }
+
+        CreditCard myCard = cardMap.get(cardName);
+        System.out.println(myCard);
+
+    }    
+}
 }
 

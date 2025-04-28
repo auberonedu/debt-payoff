@@ -13,6 +13,11 @@ public class CreditCard  implements Comparable<CreditCard>{
     return apr;
    }
 
+   // @Override 
+   // public String toString() {
+   //    return name + "" + monthlyInterest();
+   // }
+
    public String getName() {
     return name;
    }
