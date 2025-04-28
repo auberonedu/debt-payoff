@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class PayoffApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        // System.out.println(args[0]);
 
         /* 
         - Maps will overwrite the value when put in the same key name.
@@ -54,7 +57,9 @@ public class PayoffApp {
         
         // // System.out.println(amex.monthlyInterest());
 
-        Scanner scan = new Scanner(System.in);
+        String fileName = args[0];
+
+        Scanner scan = new Scanner(new File(fileName));
 
         // Create an arrayList
         List<CreditCard> cards = new ArrayList<>();
@@ -85,6 +90,21 @@ public class PayoffApp {
         // System.out.println(cards);
         // Collections.sort(cards, Collections.reverseOrder());
         // System.out.println(cards);
-        System.out.println(cardMap);
+        // System.out.println(cardMap);
+
+        Scanner userScanner = new Scanner(System.in);
+
+        // To escape the loop: Ctrl + C
+        while(true){
+            System.out.println("Enter the name of the card: ");
+            String cardName = userScanner.nextLine();
+
+            CreditCard myCard = cardMap.get(cardName);
+            if (myCard == null){
+                System.out.println("No such card!");
+            } else {
+            System.out.println(myCard);
+            }
+        }
     }
 }
