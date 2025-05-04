@@ -23,15 +23,15 @@ public class Budget {
 
     public double totalLimit() {
         double total = 0.0;
-        for (BudgetCategory category : categories.value()) {
+        for (BudgetCategory category : categories.values()) {
             total += category.getLimit();
         }
         return total;
     }
 
-    public totalSpent() {
+    public double totalSpent() {
         double total = 0.0;
-        for (BudgetCategory category : categories.value()) {
+        for (BudgetCategory category : categories.values()) {
             total += category.getSpent();
         }
         return total;

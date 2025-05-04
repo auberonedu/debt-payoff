@@ -30,6 +30,6 @@ Budget budget = new Budget();
 budget.add(new BudgetCategory("Stuff", 50, 100));
 budget.add(new BudgetCategory("Memberships", 250, 300));
 
-assertEquals(250.0, budget.remainder(), 0.01);
+assertEquals(-100.0, budget.remainder(), 0.01);
 }
 }

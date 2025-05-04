@@ -6,10 +6,11 @@ import java.io.FileNotFoundException;
 
 public class PayoffApp {
     public static void main(String[] args) throws FileNotFoundException {
-        String filename = args[0];
+        //String filename = args[0];
         Scanner scan = new Scanner(new File("userInput.txt"));
 
          Map<String, CreditCard> cardMap = new HashMap<>();
+         Budget budget = new Budget();
          //total budget
          double totalBudget = 1000.00;
 
@@ -68,12 +69,11 @@ public class PayoffApp {
 
         //adding option summary
         else if(input.equalsIgnoreCase("summary")) {
-            double totalSpent = 0.0;
-            for (CreditCard card : cardMap.values()) {
-                totalSpent += card.getBalance();
-            }
-            double difference = totalBudget - totalSpent;
-            System.out.printf("Total Budget: $%.2f\n", totalBudget);
+            double totalLimit = budget.totalLimit();
+            double totalSpent = budget.totalSpent();
+            double difference = budget.remainder();
+        
+        System.out.printf("Total Budget: $%.2f\n", totalLimit);
         System.out.printf("Total Spent: $%.2f\n", totalSpent);
 
         if (difference > 0) {
@@ -86,17 +86,25 @@ public class PayoffApp {
     }
     else {
       CreditCard card = cardMap.get(input);
-      if(card==null) {
-        System.out.println("Error");
-      } else {
+      BudgetCategory category = budget.get(input);
+
+   if (card != null) {
         System.out.println("Card Name: " + card.getName());
         System.out.printf("Apr: %2.f%%\n", + card.getApr());
         System.out.printf("Balance: $%.2f\n", + card.getBalance());
       }
+      else if (category != null) {
+        System.out.println("Card Name: " + card.getName());
+        System.out.printf("Apr: %2.f%%\n", + card.getApr());
+        System.out.printf("Balance: $%.2f\n", + card.getBalance());
+      }
+      else {
+        System.out.println("Error");
+      }
+      }
     }
     scan.close();
     userScanner.close();
-}
 }
 }
 
