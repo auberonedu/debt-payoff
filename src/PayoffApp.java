@@ -9,8 +9,11 @@ import java.io.FileNotFoundException;
 
 public class PayoffApp {
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(args[0]);
-        System.out.println(args[1]);
+        String filename = args[0];
+        Scanner scan = new Scanner(new File("userInput.txt"));
+        }
+        // System.out.println(args[0]);
+        // System.out.println(args[1]);
 
 
         // Map<String, Integer> schoolAges = new HashMap<>();
@@ -33,25 +36,24 @@ public class PayoffApp {
         // }
 
 
-        // CreditCard amex = new CreditCard("American Expresss", 22, 1007);
-        // CreditCard discover = new CreditCard("Discover It", 33, 500);
+        CreditCard amex = new CreditCard("American Expresss", 22, 1007);
+        CreditCard discover = new CreditCard("Discover It", 33, 500);
 
-        // Map<String, CreditCard> cardMap = new HashMap<>();
-        // cardMap.put("American Express", amex);
-        // cardMap.put("Discover It", discover);
+        Map<String, CreditCard> cardMap = new HashMap<>();
+        cardMap.put("American Express", amex);
+        cardMap.put("Discover It", discover);
 
-        // System.out.println(cardMap.get("American Express"));
+        System.out.println(cardMap.get("American Express"));
 
-        // CreditCard myCard = cardMap.get("American Express");
-        // System.out.println(myCard.getApr());
-    //    System.out.println(amex.monthlyInterest());
+        CreditCard myCard = cardMap.get("American Express");
+        System.out.println(myCard.getApr());
+       System.out.println(amex.monthlyInterest());
 
-    String filename = args[0];
-       
-        Scanner scan = new Scanner(new File(filename));
+        // String filename = args[0];
+        // Scanner scan = new Scanner(new File(filename));
 
        List<CreditCard> cards = new ArrayList<CreditCard>();
-       Map<String, CreditCard> cardMap = new HashMap<>();
+    //    Map<String, CreditCard> cardMap = new HashMap<>();
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
@@ -63,14 +65,13 @@ public class PayoffApp {
             if(scan.hasNextLine()) scan.nextLine();
 
             CreditCard myCard = new CreditCard(name, apr, balance);
-            
             cards.add(myCard);
             cardMap.put(name, myCard);
         
-        //     String aprString = String.format("%.2f%%", apr);
-        //     String balanceString = String.format("$%.2f", balance);
-        //     System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
-        // 
+            String aprString = String.format("%.2f%%", apr);
+            String balanceString = String.format("$%.2f", balance);
+            System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
+        
         }
 
         // System.out.println(cards);
@@ -87,11 +88,11 @@ public class PayoffApp {
     } else {
         System.out.println(myCard);
     }
-
-        CreditCard myCard = cardMap.get(cardName);
-        System.out.println(myCard);
-
-    }    
 }
+    }
 }
+    
+        // CreditCard myCard = cardMap.get(cardName);
+        // System.out.println(myCard);
+
 
