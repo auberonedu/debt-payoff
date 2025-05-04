@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.io.File;
@@ -12,29 +9,6 @@ public class PayoffApp {
         String filename = args[0];
         Scanner scan = new Scanner(new File("userInput.txt"));
 
-        // System.out.println(args[0]);
-        // System.out.println(args[1]);
-        // Map<String, Integer> schoolAges = new HashMap<>();
-        // schoolAges.put("GRC",40);
-        // schoolAges.put("WSU",100);
-        // schoolAges.put("BC",35);
-        // schoolAges.put("WSU",135);
-
-        //print out age of WSU
-        // System.out.println(schoolAges.get("WSU"));
-
-
-        //uses 'var' instead of (Map.Entry<String,Integer>
-        // for(var entry : schoolAges.entrySet()) {
-        //     System.out.println(entry.getKey() + ":" + entry.getValue());
-        // }
-
-        // for(Map.Entry<String,Integer> entry : schoolAges.entrySet()) {
-        //     System.out.println(entry.getKey() + ":" + entry.getValue());
-        // }
-
-        //Creates a Map
-        // List<CreditCard> cards = new ArrayList<>();
          Map<String, CreditCard> cardMap = new HashMap<>();
 
 
@@ -82,16 +56,28 @@ public class PayoffApp {
         Scanner userScanner = new Scanner(System.in);
         while(true) {
              System.out.println("Enter the name of the card"); 
-        String cardName = userScanner.nextLine();
+        String input = userScanner.nextLine();
+        
 
-        CreditCard myCard = cardMap.get(cardName);
-        if(myCard == null) { System.out.println("No such card!");
-    } else {
-        System.out.println(myCard);
+        if(input.equalsIgnoreCase("Quit")) {
+            System.out.println("End");
+            break;
+        }
+
+      CreditCard card = cardMap.get(input);
+      if(card==null) {
+        System.out.println("Error");
+      } else {
+        System.out.println("Card Name: " + card.getName());
+        System.out.printf("Apr: %2.f%%\n", + card.getApr());
+        System.out.printf("Balance: $%.2f\n", + card.getBalance());
+      }
     }
+    scan.close();
+    userScanner.close();
 }
-    }
 }
+
     
         // CreditCard myCard = cardMap.get(cardName);
         // System.out.println(myCard);
