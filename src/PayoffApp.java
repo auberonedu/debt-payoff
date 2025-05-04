@@ -10,6 +10,8 @@ public class PayoffApp {
         Scanner scan = new Scanner(new File("userInput.txt"));
 
          Map<String, CreditCard> cardMap = new HashMap<>();
+         //total budget
+         double totalBudget = 1000.00;
 
 
         // CreditCard amex = new CreditCard("American Expresss", 22, 1007);
@@ -55,7 +57,7 @@ public class PayoffApp {
 
         Scanner userScanner = new Scanner(System.in);
         while(true) {
-             System.out.println("Enter the name of the card"); 
+             System.out.println("Enter the name of the card, 'summary', quit"); 
         String input = userScanner.nextLine();
         
 
@@ -64,6 +66,25 @@ public class PayoffApp {
             break;
         }
 
+        //adding option summary
+        else if(input.equalsIgnoreCase("summary")) {
+            double totalSpent = 0.0;
+            for (CreditCard card : cardMap.values()) {
+                totalSpent += card.getBalance();
+            }
+            double difference = totalBudget - totalSpent;
+            System.out.printf("Total Budget: $%.2f\n", totalBudget);
+        System.out.printf("Total Spent: $%.2f\n", totalSpent);
+
+        if (difference > 0) {
+            System.out.printf("You are under budget by $%.2f\n", difference);
+        } else if (difference < 0) {
+            System.out.printf("You are over budget by $%.2f\n", Math.abs(difference));
+        } else {
+            System.out.println("You are exactly on budget.");
+        }
+    }
+    else {
       CreditCard card = cardMap.get(input);
       if(card==null) {
         System.out.println("Error");
@@ -75,6 +96,7 @@ public class PayoffApp {
     }
     scan.close();
     userScanner.close();
+}
 }
 }
 
