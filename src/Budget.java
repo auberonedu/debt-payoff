@@ -7,4 +7,8 @@ public class Budget {
         categories = new HashMap<>();
     }
     
+    public void add(BudgetCategory category) {
+        categories.put(category.getName(), category);
+    }
+
 }
