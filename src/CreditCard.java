@@ -9,10 +9,6 @@ public class CreditCard  implements Comparable<CreditCard>{
     this.balance = balance;
    }
 
-   public double getApr() {
-    return apr;
-   }
-
    // @Override 
    // public String toString() {
    //    return name + "" + monthlyInterest();
@@ -22,35 +18,39 @@ public class CreditCard  implements Comparable<CreditCard>{
     return name;
    }
 
+
+   public double getApr() {
+      return apr;
+     }
+   
    public double getBalance() {
     return balance;
    }
-
-   @Override
-   public String toString() {
-    return name +  "" + balance;
-   }
-
    public double monthlyInterest() {
       return balance * apr/12/100;
    }
 
-
-   public int CompareTo(CreditCard other) {
-      if(monthlyInterest() > other.monthlyInterest()) {
-         return 1;
-      }
-      if(monthlyInterest() < other.monthlyInterest()) {
-            return -1;
-      }
-            return 0;
+   @Override
+   public String toString() {
+    return name +  "$" + String.format("%.2f", balance);
    }
+
+   // public int CompareTo(CreditCard other) {
+   //    if(monthlyInterest() > other.monthlyInterest()) {
+   //       return 1;
+   //    }
+   //    if(monthlyInterest() < other.monthlyInterest()) {
+   //          return -1;
+   //    }
+   //          return 0;
+   // }
 
    @Override
-   public int compareTo(CreditCard o) {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
-   }
+   public int compareTo(CreditCard other) {
+     double thisInterest = this.monthlyInterest();
+     double otherInterest = other.monthlyInterest();
+     return Double.compare(thisInterest, otherInterest);
+}
 }
 
    
