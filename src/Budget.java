@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+
 public class Budget {
     private Map<String, BudgetCategory> categories;
     
@@ -18,6 +19,14 @@ public class Budget {
        else {
         return null;
        }
+    }
+
+    public double totalLimit() {
+        double total = 0.0;
+        for (BudgetCategory category : categories.value()) {
+            total += category.getLimit();
+        }
+        return total;
     }
 
 }
