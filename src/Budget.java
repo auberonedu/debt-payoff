@@ -11,4 +11,13 @@ public class Budget {
         categories.put(category.getName(), category);
     }
 
+    public BudgetCategory get(String name) {
+       if(categories.containsKey(name)) {
+        return categories.get(name);
+       }
+       else {
+        return null;
+       }
+    }
+
 }
